@@ -38,6 +38,7 @@
                 <field name="garage"/>
                 <field name="garden_area"/>
                 <field name="garden_orientation"/>
+                <field name="property_type_id"/>
                 <field name="active"/>
             </tree>
         </field>
@@ -54,6 +55,8 @@
                     </header>
                     <group>
                         <group>
+                            <field name="tag_ids" widget="many2many_tags"/>
+                            <field name="property_type_id"/>
                             <field name="postcode"/>
                             <field name="date_availability"/>
                         </group>
@@ -74,8 +77,37 @@
                                 </group>
                             </page>
                         </notebook>
+                        <notebook>
+                            <page string="Other Info">
+                                <group>
+                                    <field name="salesman"/>
+                                    <field name="buyer"/>
+                                </group>
+                            </page>
+                        </notebook>
+                        <notebook>
+                            <page string="出价">
+                                <group>
+                                    <field name="offer_ids"/>
+                                </group>
+                            </page>
+                        </notebook>
                     </group>
                 </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="estate_property_offer_form" model="ir.ui.view">
+        <field name="name">estate.property.offer.form</field>
+        <field name="model">estate.property.offer</field>
+        <field name="arch" type="xml">
+            <form string="Offers">
+                <group>
+                    <field name="price"/>
+                    <field name="partner_id"/>
+                    <field name="status"/>
+                </group>
             </form>
         </field>
     </record>
@@ -83,6 +115,18 @@
     <record id="estate_property_act_window" model="ir.actions.act_window">
         <field name="name">物业记录</field>
         <field name="res_model">estate.property</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="estate_type_act_window" model="ir.actions.act_window">
+        <field name="name">物业类型</field>
+        <field name="res_model">estate.property.type</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="estate_tag_act_window" model="ir.actions.act_window">
+        <field name="name">物业标签</field>
+        <field name="res_model">estate.property.tag</field>
         <field name="view_mode">tree,form</field>
     </record>
 </odoo>

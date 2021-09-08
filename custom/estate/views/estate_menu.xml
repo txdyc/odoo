@@ -4,5 +4,9 @@
         <menuitem id="estate_property_first_level_menu" name="物业一级目录">
             <menuitem id="sec_estate_property_menu_action" action="estate_property_act_window"/>
         </menuitem>
+        <menuitem id="estate_property_type_first_level_menu" name="设置">
+            <menuitem id="sec_estate_type_menu_action" action="estate_type_act_window"/>
+            <menuitem id="sec_estate_tag_menu_action" action="estate_tag_act_window"/>
+        </menuitem>
     </menuitem>
 </odoo>

@@ -21,3 +21,8 @@ class EstateProperty(models.Model):
     garden_area = fields.Integer(string='花园面积')
     garden_orientation = fields.Selection([('North', '北'), ('South', '南'), ('East', '东'), ('West', '西')], string='花园朝向')
     active = fields.Boolean(default=True)
+    property_type_id = fields.Many2one("estate.property.type", string="房屋类型")
+    salesman = fields.Many2one("res.users", string="销售员", index=True, default=lambda self: self.env.user)
+    buyer = fields.Many2one("res.partner", string="买家")
+    tag_ids = fields.Many2many("estate.property.tag", string="标签")
+    offer_ids = fields.One2many("estate.property.offer", "property_id", string="购买意向")
